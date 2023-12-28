@@ -1,3 +1,7 @@
+# My Food Print
+
+My Food Print is a app to creat shopping list that shows the foot print of each product in the list. It was created as lab 1 in the React course at IT-Högskolan, Sweden.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -10,7 +10,7 @@ function App() {
       <Menu websiteList={websiteList} setWebsiteList={setWebsiteList} />
       <ul>
         {websiteList.map((webside, i) => (
-          <li key={i}>{webside}</li>
+          <li key={i}>{webside.url}</li>
         ))}
       </ul>
     </div>

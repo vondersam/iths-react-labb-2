@@ -1,4 +1,14 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useState } from 'react';
+import styled from 'styled-components';
+
+const Button = styled.button`
+  background: #bf4f74;
+  border-radius: 3px;
+  border: 2px solid #bf4f74;
+  color: white;
+  margin: 0.5em 1em;
+  padding: 0.25em 1em;
+`;
 
 const Menu = ({ websiteList, setWebsiteList }) => {
   const url = useRef('');
@@ -36,9 +46,9 @@ const Menu = ({ websiteList, setWebsiteList }) => {
         onChange={(e) => (url.current = e.target.value)}
         placeholder="Add a URL with protocol"
       />
-      <button type="button" onClick={() => addToWebsiteList()}>
+      <Button type="button" onClick={() => addToWebsiteList()}>
         Add
-      </button>
+      </Button>
       {loading && 'Loading...'}
     </div>
   );

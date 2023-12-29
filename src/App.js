@@ -3,14 +3,14 @@ import { useState } from 'react';
 import Menu from './components/menu';
 
 function App() {
-  const [foodList, setFoodList] = useState([]);
+  const [websiteList, setWebsiteList] = useState([]);
   return (
     <div className="App">
-      <h2>My Food Print</h2>
-      <Menu foodList={foodList} setFoodList={setFoodList} />
+      <h2>Website Carbon Comparator</h2>
+      <Menu websiteList={websiteList} setWebsiteList={setWebsiteList} />
       <ul>
-        {foodList.map((foodItem, i) => (
-          <li key={i}>{foodItem}</li>
+        {websiteList.map((webside, i) => (
+          <li key={i}>{webside}</li>
         ))}
       </ul>
     </div>

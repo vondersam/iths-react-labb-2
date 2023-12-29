@@ -1,23 +1,20 @@
 import { useRef } from 'react';
 
-const Menu = ({ foodList, setFoodList }) => {
-  const foodItem = useRef('');
-  const addToFoodList = () => {
-    if (!foodList.find((element) => element === foodItem.current)) {
-      const newFoodList = [...foodList, foodItem.current];
-      setFoodList(newFoodList);
+const Menu = ({ websiteList, setWebsiteList }) => {
+  const website = useRef('');
+  const addToWebsiteList = () => {
+    if (!websiteList.find((element) => element === website.current)) {
+      const newWebsiteList = [...websiteList, website.current];
+      setWebsiteList(newWebsiteList);
     } else {
-      alert(`${foodItem.current} is already on your list!`);
+      alert(`${website.current} is already on your list!`);
     }
   };
 
   return (
     <div>
-      <input
-        type="text"
-        onChange={(e) => (foodItem.current = e.target.value)}
-      />
-      <button type="button" onClick={() => addToFoodList()}>
+      <input type="text" onChange={(e) => (website.current = e.target.value)} />
+      <button type="button" onClick={() => addToWebsiteList()}>
         Add
       </button>
     </div>

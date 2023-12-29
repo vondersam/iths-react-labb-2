@@ -1,6 +1,6 @@
-# My Food Print
+# Website foot print comparator
 
-My Food Print is a app to creat shopping list that shows the foot print of each product in the list. It was created as lab 1 in the React course at IT-Högskolan, Sweden.
+App to compare the carbon emissions of websites. It was created as lab 2 in the React course at IT-Högskolan, Sweden.
 
 # Getting Started with Create React App
 

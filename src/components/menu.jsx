@@ -34,11 +34,12 @@ const Menu = ({ websiteList, setWebsiteList }) => {
       <input
         type="text"
         onChange={(e) => (url.current = e.target.value)}
-        placeholder={loading ? 'Loading' : 'Add a URL with protocol'}
+        placeholder="Add a URL with protocol"
       />
       <button type="button" onClick={() => addToWebsiteList()}>
         Add
       </button>
+      {loading && 'Loading...'}
     </div>
   );
 };

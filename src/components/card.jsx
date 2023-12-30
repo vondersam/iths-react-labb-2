@@ -27,15 +27,18 @@ const Description = styled.p`
 
 const Card = ({ url, green, bytes, cleanerThan, statistics }) => {
   const urlObj = new URL(url);
+  const co2Grams = Number.parseFloat(statistics.co2.grid.grams).toFixed(3);
+  const kwg = Number.parseFloat(statistics.energy).toFixed(5);
+  const cleanerPercentage = Number.parseFloat(cleanerThan * 100).toFixed(2);
   return (
     <Wrapper cleanerPercent={cleanerThan}>
       <Title>{urlObj.hostname}</Title>
       <Description>{`This website is ${
         !green ? 'not ' : ''
       }green`}</Description>
-      <Description>{`Cleaner than ${cleanerThan}`}</Description>
-      <Description>{`Energy ${statistics.energy} KWg.`}</Description>
-      <Description>{`Co2 ${statistics.co2.grid.grams} transferred from the grid on each page load`}</Description>
+      <Description>{`Cleaner than ${cleanerPercentage}% of tested websites`}</Description>
+      <Description>{`${kwg} KWg of energy per page load.`}</Description>
+      <Description>{`${co2Grams} CO2 gr. from the grid per page load`}</Description>
     </Wrapper>
   );
 };

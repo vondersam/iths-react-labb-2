@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import Sort from './sort';
+import { ACTION } from '../App';
 
 const Button = styled.button`
   background: #bf4f74;
@@ -25,7 +26,7 @@ const Menu = ({ state, dispatchWebsite }) => {
       const request = `site?url=${encodedUrl}`;
       const response = await fetch(request);
       const data = await response.json();
-      dispatchWebsite({ type: 'add', data: data });
+      dispatchWebsite({ type: ACTION.add, data: data });
       setLoading(false);
     } catch (e) {
       alert(e);

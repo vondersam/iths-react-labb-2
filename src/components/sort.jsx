@@ -1,13 +1,17 @@
+import { useState } from 'react';
+import { ACTION } from '../App';
+
 const Sort = ({ dispatchWebsite }) => {
+  const handleChange = (e) => {
+    const action = e.target.value;
+    dispatchWebsite({ type: action });
+  };
+
   return (
-    <select id="pet-select">
-      <option value="">--Sort list--</option>
-      <option value="dog">Dog</option>
-      <option value="cat">Cat</option>
-      <option value="hamster">Hamster</option>
-      <option value="parrot">Parrot</option>
-      <option value="spider">Spider</option>
-      <option value="goldfish">Goldfish</option>
+    <select onChange={(e) => handleChange(e)}>
+      <option value={ACTION.sort_alphabetically}>Alphabetical</option>
+      <option value={ACTION.sort_by_energy}>Energy</option>
+      <option value={ACTION.sort_by_co2}>CO2</option>
     </select>
   );
 };

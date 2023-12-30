@@ -11,8 +11,8 @@ const CardList = ({ websiteList }) => {
   return (
     <>
       <Wrapper>
-        {websiteList.map((website) => (
-          <Card {...website} />
+        {websiteList.map((website, i) => (
+          <Card key={i} {...website} />
         ))}
       </Wrapper>
     </>

@@ -8,6 +8,9 @@ const Button = styled.button`
   color: white;
   margin: 0.5em 1em;
   padding: 0.25em 1em;
+  &:hover {
+    opacity: 0.5;
+    cursor: pointer;
 `;
 
 const Menu = ({ websiteList, setWebsiteList }) => {
@@ -25,7 +28,7 @@ const Menu = ({ websiteList, setWebsiteList }) => {
       setWebsiteList(newWebsiteList);
       setLoading(false);
     } catch (e) {
-      console.error(e);
+      alert(e);
     }
   };
 
@@ -34,6 +37,7 @@ const Menu = ({ websiteList, setWebsiteList }) => {
       alert(`You need to use a well-formatted URL, including its protocol`);
     } else if (!websiteList.find((element) => element.url === url.current)) {
       getData();
+      console.log(websiteList);
     } else {
       alert(`${url.current} is already on your list!`);
     }

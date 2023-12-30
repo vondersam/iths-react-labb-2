@@ -1,15 +1,28 @@
 import './App.css';
-import { useState } from 'react';
+import { useReducer } from 'react';
 import Menu from './components/menu';
 import CardList from './components/cardList';
 
+const websitesReducer = (state, action) => {
+  switch (action.type) {
+    case 'add': {
+      return { websiteList: [...state.websiteList, action.data] };
+    }
+    default:
+      throw new Error();
+  }
+};
+
 function App() {
-  const [websiteList, setWebsiteList] = useState([]);
+  const [state, dispatchWebsite] = useReducer(websitesReducer, {
+    websiteList: [],
+    url: ''
+  });
   return (
     <div className="App">
       <h2>Website Carbon Comparator</h2>
-      <Menu websiteList={websiteList} setWebsiteList={setWebsiteList} />
-      <CardList websiteList={websiteList} />
+      <Menu state={state} dispatchWebsite={dispatchWebsite} />
+      <CardList state={state} />
     </div>
   );
 }

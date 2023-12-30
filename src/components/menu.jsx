@@ -1,5 +1,6 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
+import Sort from './sort';
 
 const Button = styled.button`
   background: #bf4f74;
@@ -13,7 +14,7 @@ const Button = styled.button`
     cursor: pointer;
 `;
 
-const Menu = ({ websiteList, setWebsiteList }) => {
+const Menu = ({ state, dispatchWebsite }) => {
   const url = useRef('');
   const [loading, setLoading] = useState(false);
 
@@ -24,8 +25,7 @@ const Menu = ({ websiteList, setWebsiteList }) => {
       const request = `site?url=${encodedUrl}`;
       const response = await fetch(request);
       const data = await response.json();
-      const newWebsiteList = [...websiteList, data];
-      setWebsiteList(newWebsiteList);
+      dispatchWebsite({ type: 'add', data: data });
       setLoading(false);
     } catch (e) {
       alert(e);
@@ -35,9 +35,10 @@ const Menu = ({ websiteList, setWebsiteList }) => {
   const addToWebsiteList = () => {
     if (!URL.canParse(url.current)) {
       alert(`You need to use a well-formatted URL, including its protocol`);
-    } else if (!websiteList.find((element) => element.url === url.current)) {
+    } else if (
+      !state.websiteList.find((element) => element.url === url.current)
+    ) {
       getData();
-      console.log(websiteList);
     } else {
       alert(`${url.current} is already on your list!`);
     }
@@ -54,6 +55,7 @@ const Menu = ({ websiteList, setWebsiteList }) => {
         Add
       </Button>
       {loading && 'Loading...'}
+      <Sort dispatchWebsite={dispatchWebsite} />
     </div>
   );
 };

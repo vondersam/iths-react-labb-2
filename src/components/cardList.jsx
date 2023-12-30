@@ -7,13 +7,12 @@ const Wrapper = styled.div`
   justify-content: center;
 `;
 
-const CardList = ({ websiteList }) => {
+const CardList = ({ state }) => {
   return (
     <>
       <Wrapper>
-        {websiteList.map((website, i) => (
-          <Card key={i} {...website} />
-        ))}
+        {state.websiteList.length > 0 &&
+          state.websiteList.map((website, i) => <Card key={i} {...website} />)}
       </Wrapper>
     </>
   );

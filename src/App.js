@@ -40,10 +40,11 @@ const websitesReducer = (state, action) => {
 };
 
 function App() {
-  const [state, dispatchWebsite] = useReducer(websitesReducer, {
+  const initialState = {
     websiteList: [],
     url: ''
-  });
+  };
+  const [state, dispatchWebsite] = useReducer(websitesReducer, initialState);
   return (
     <div className="App">
       <h2>Website Carbon Comparator</h2>

@@ -19,3 +19,8 @@ code {
 .app {
   text-align: center;
 }
+
+.app-dark {
+  text-align: center;
+  background-color: rgb(53, 51, 50);
+}

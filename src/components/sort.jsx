@@ -1,5 +1,5 @@
-import { ACTION } from '../App';
 import styled from 'styled-components';
+import { ACTION } from '../interfaces/action';
 
 const Select = styled.select`
 border-radius: 3px;

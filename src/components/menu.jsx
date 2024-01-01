@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import styled from 'styled-components';
 import Sort from './sort';
-import { ACTION } from '../App';
+import { ACTION } from '../interfaces/action';
 
 const Input = styled.input`
   border-radius: 3px;

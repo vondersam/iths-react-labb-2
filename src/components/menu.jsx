@@ -1,7 +1,13 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import styled from 'styled-components';
 import Sort from './sort';
 import { ACTION } from '../App';
+
+const Input = styled.input`
+  border-radius: 3px;
+  margin: 0.5em 1em;
+  padding: 0.25em 1em;
+`;
 
 const Button = styled.button`
   background: #bf4f74;
@@ -47,16 +53,20 @@ const Menu = ({ state, dispatchWebsite }) => {
 
   return (
     <div>
-      <input
-        type="text"
-        onChange={(e) => (url.current = e.target.value)}
-        placeholder="Add a URL with protocol"
-      />
+      <label>
+        Add a URL with protocol
+        <Input type="text" onChange={(e) => (url.current = e.target.value)} />
+      </label>
       <Button type="button" onClick={() => addToWebsiteList()}>
         Add
       </Button>
       {loading && 'Loading...'}
-      <Sort dispatchWebsite={dispatchWebsite} />
+      <div>
+        <label>
+          Sort by
+          <Sort dispatchWebsite={dispatchWebsite} />
+        </label>
+      </div>
     </div>
   );
 };

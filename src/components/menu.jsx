@@ -1,7 +1,8 @@
 import { useRef, useState } from 'react';
 import styled from 'styled-components';
-import Sort from './sort';
 import { ACTION } from '../interfaces/action';
+import Sort from './sort';
+import ThemeToggler from './themeToggler';
 
 const Input = styled.input`
   border-radius: 3px;
@@ -52,7 +53,7 @@ const Menu = ({ state, dispatchWebsite }) => {
   };
 
   return (
-    <div>
+    <>
       <label>
         Add a URL with protocol
         <Input type="text" onChange={(e) => (url.current = e.target.value)} />
@@ -61,13 +62,12 @@ const Menu = ({ state, dispatchWebsite }) => {
         Add
       </Button>
       {loading && 'Loading...'}
-      <div>
-        <label>
-          Sort by
-          <Sort dispatchWebsite={dispatchWebsite} />
-        </label>
-      </div>
-    </div>
+      <label>
+        Sort by
+        <Sort dispatchWebsite={dispatchWebsite} />
+      </label>
+      <ThemeToggler />
+    </>
   );
 };
 

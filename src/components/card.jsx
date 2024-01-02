@@ -27,8 +27,8 @@ const Description = styled.p`
 
 const Card = ({ url, green, bytes, cleanerThan, statistics }) => {
   const urlObj = new URL(url);
-  const co2Grams = Number.parseFloat(statistics.co2.grid.grams).toFixed(3);
   const kwg = Number.parseFloat(statistics.energy).toFixed(5);
+  const co2Grams = Number.parseFloat(statistics.co2.grid.grams).toFixed(3);
   const cleanerPercentage = Number.parseFloat(cleanerThan * 100).toFixed(2);
   return (
     <Wrapper cleanerPercent={cleanerThan}>

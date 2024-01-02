@@ -3,6 +3,7 @@ import { useReducer, createContext, useState, useEffect } from 'react';
 import Menu from './components/menu';
 import CardList from './components/cardList';
 import websitesReducer from './reducers/websiteReducer';
+import GeneralStats from './components/generalStats';
 
 export const ThemeContext = createContext(null);
 
@@ -17,12 +18,12 @@ function App() {
   useEffect(() => {
     document.body.setAttribute('data-theme', darkTheme ? 'dark' : 'light');
   }, [darkTheme]);
-
   return (
     <div className={darkTheme ? 'app-dark' : 'app'}>
       <h2>Website Carbon Comparator</h2>
       <ThemeContext.Provider value={{ darkTheme, setDarkTheme }}>
         <Menu state={state} dispatchWebsite={dispatchWebsite} />
+        <GeneralStats state={state} />
       </ThemeContext.Provider>
       <CardList state={state} />
     </div>

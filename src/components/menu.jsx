@@ -22,7 +22,7 @@ const Button = styled.button`
     cursor: pointer;
 `;
 
-const Menu = ({ state, dispatchWebsite }) => {
+const Menu = ({ state, dispatchWebsite, setCombinedStats }) => {
   const url = useRef('');
   const [loading, setLoading] = useState(false);
 

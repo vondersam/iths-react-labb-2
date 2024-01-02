@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useCallback, useEffect } from 'react';
 import styled from 'styled-components';
 import { ACTION } from '../interfaces/action';
 import Sort from './sort';
@@ -25,11 +25,12 @@ const Button = styled.button`
 const Menu = ({ state, dispatchWebsite, setCombinedStats }) => {
   const url = useRef('');
   const [loading, setLoading] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
-  const getData = async () => {
+  const getData = useCallback(async () => {
     setLoading(true);
-    const encodedUrl = encodeURIComponent(url.current);
     try {
+      const encodedUrl = encodeURIComponent(url.current);
       const request = `site?url=${encodedUrl}`;
       const response = await fetch(request);
       const data = await response.json();
@@ -38,19 +39,21 @@ const Menu = ({ state, dispatchWebsite, setCombinedStats }) => {
     } catch (e) {
       alert(e);
     }
-  };
+  }, [dispatchWebsite]);
 
-  const addToWebsiteList = () => {
-    if (!URL.canParse(url.current)) {
-      alert(`You need to use a well-formatted URL, including its protocol`);
-    } else if (
-      !state.websiteList.find((element) => element.url === url.current)
-    ) {
-      getData();
-    } else {
-      alert(`${url.current} is already on your list!`);
+  useEffect(() => {
+    if (submitting) {
+      if (!URL.canParse(url.current)) {
+        alert(`You need to use a well-formatted URL, including its protocol`);
+      } else if (
+        !state.websiteList.find((element) => element.url === url.current)
+      ) {
+        getData().then(() => setSubmitting(false));
+      } else {
+        alert(`${url.current} is already on your list!`);
+      }
     }
-  };
+  }, [submitting, getData, state]);
 
   return (
     <>
@@ -58,7 +61,7 @@ const Menu = ({ state, dispatchWebsite, setCombinedStats }) => {
         Add a URL with protocol
         <Input type="text" onChange={(e) => (url.current = e.target.value)} />
       </label>
-      <Button type="button" onClick={() => addToWebsiteList()}>
+      <Button type="button" onClick={() => setSubmitting(true)}>
         Add
       </Button>
       {loading && 'Loading...'}

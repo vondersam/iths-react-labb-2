@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   margin: 1rem;
   overflow-wrap: break-word;
   /* Range of red depending on how clean the website is */
-  background-color: ${(props) => `hsl(6, 59%, ${props.cleanerPercent * 100}%)`};
+  background-color: ${(props) => `hsl(6, 59%, ${props.cleanerpercent * 100}%)`};
   }
 `;
 
@@ -31,7 +31,7 @@ const Card = ({ url, green, bytes, cleanerThan, statistics }) => {
   const co2Grams = Number.parseFloat(statistics.co2.grid.grams).toFixed(3);
   const cleanerPercentage = Number.parseFloat(cleanerThan * 100).toFixed(2);
   return (
-    <Wrapper cleanerPercent={cleanerThan}>
+    <Wrapper cleanerpercent={cleanerThan}>
       <Title>{urlObj.hostname}</Title>
       <Description>{`This website is ${
         !green ? 'not ' : ''

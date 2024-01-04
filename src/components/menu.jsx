@@ -66,7 +66,6 @@ const Menu = ({ state, dispatchWebsite, setCombinedStats }) => {
       </Button>
       {loading && 'Loading...'}
       <label>
-        Sort by
         <Sort dispatchWebsite={dispatchWebsite} />
       </label>
       <ThemeToggler />

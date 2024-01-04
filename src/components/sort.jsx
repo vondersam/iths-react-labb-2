@@ -15,11 +15,12 @@ padding: 0.25em 1em;
 const Sort = ({ dispatchWebsite }) => {
   const handleChange = (e) => {
     const action = e.target.value;
-    dispatchWebsite({ type: action });
+    if (action) dispatchWebsite({ type: action });
   };
 
   return (
     <Select onChange={(e) => handleChange(e)}>
+      <option value="">--Sort by--</option>
       <option value={ACTION.sort_alphabetically}>Alphabetical</option>
       <option value={ACTION.sort_by_energy}>Energy</option>
       <option value={ACTION.sort_by_co2}>CO2</option>

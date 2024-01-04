@@ -6,12 +6,10 @@ const ThemeToggler = () => {
 
   return (
     <label>
-      {darkTheme ? 'Dark ' : 'Light '} theme
+      Change to {darkTheme ? 'light ' : 'dark '} theme
       <input type="checkbox" onClick={() => setDarkTheme(!darkTheme)} />
-      {/* <span className="slider"></span> */}
     </label>
   );
 };
 
 export default ThemeToggler;
-

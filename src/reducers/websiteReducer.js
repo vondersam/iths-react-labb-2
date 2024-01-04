@@ -7,7 +7,9 @@ const websitesReducer = (state, action) => {
     }
     case ACTION.sort_alphabetically: {
       return {
-        websiteList: state.websiteList.toSorted((a, b) => b.url - a.url)
+        websiteList: state.websiteList.toSorted((a, b) =>
+          a.url > b.url ? +1 : -1
+        )
       };
     }
     case ACTION.sort_by_energy: {

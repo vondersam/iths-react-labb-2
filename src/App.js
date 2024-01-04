@@ -20,7 +20,7 @@ function App() {
   }, [darkTheme]);
   return (
     <div className={darkTheme ? 'app-dark' : 'app'}>
-      <h2>Website Carbon Comparator</h2>
+      <h2>Website Footprint Comparator</h2>
       <ThemeContext.Provider value={{ darkTheme, setDarkTheme }}>
         <Menu state={state} dispatchWebsite={dispatchWebsite} />
         <GeneralStats state={state} />

@@ -1,6 +1,12 @@
 # Website foot print comparator
 
-App to compare the carbon emissions of websites. It was created as lab 2 in the React course at IT-Högskolan, Sweden.
+App to compare the footprint of websites. It was created as lab 2 in the React course at IT-Högskolan, Sweden.
+
+You can search and add the footprint of a website and compare it to others. These stats are obtained from the [Website Carbon API](https://api.websitecarbon.com/). The API needs to be called through a proxy, which considerably slows down the response time, since otherwise an CORS error is returned.
+
+The lightness of the background of the color of the website cards changes based on the percentage of how much cleaner the website is compared to others tested.
+
+A sorting and theme togglers are provided, and the stats of the multiple websites added are sumed up and displayed in a message.
 
 # Getting Started with Create React App
 
